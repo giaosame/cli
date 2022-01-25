@@ -18,6 +18,8 @@ require (
 	github.com/sirupsen/logrus v1.7.0
 	github.com/tredoe/term v0.0.0-20161130133337-e551c64f56c0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
-	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c
+	golang.org/x/sys v0.0.0-20210603081109-ebe580a85c40
 	gopkg.in/yaml.v2 v2.4.0
 )
+
+replace github.com/projecteru2/core v0.0.0-20210505033735-4eb01b274d96 => github.com/giaosame/core v0.0.0-20220125074917-3e25f13eb1fa
