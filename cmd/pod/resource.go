@@ -2,6 +2,7 @@ package pod
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -99,6 +100,7 @@ func (o *resourcePodOptions) filter(nrs []*corepb.NodeResource) ([]*corepb.NodeR
 }
 
 func (o *resourcePodOptions) run(ctx context.Context) error {
+	fmt.Println("======================= run =======================")
 	resp, err := o.client.GetPodResource(ctx, &corepb.GetPodOptions{
 		Name: o.name,
 	})
@@ -106,16 +108,20 @@ func (o *resourcePodOptions) run(ctx context.Context) error {
 		return err
 	}
 
+	fmt.Printf("resp.NodesResource: %v\n", resp.NodesResource)
+
 	nrs, err := o.filter(resp.NodesResource)
 	if err != nil {
 		return err
 	}
 
+	fmt.Printf("nrs: %v\n", nrs)
 	describe.NodeResources(nrs...)
 	return nil
 }
 
 func cmdPodResource(c *cli.Context) error {
+	fmt.Println("======================= cmdPodResource =======================")
 	client, err := utils.NewCoreRPCClient(c)
 	if err != nil {
 		return err

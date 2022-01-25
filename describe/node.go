@@ -61,7 +61,9 @@ func describeNodes(nodes []*corepb.Node) {
 // NodeResources describes a list of NodeResource
 // output format can be json or yaml or table
 func NodeResources(resources ...*corepb.NodeResource) {
+	fmt.Println("======================= NodeResources =======================")
 	for _, resource := range resources {
+		fmt.Printf("resource: %v\n", resource)
 		checkNaNForResource(resource)
 	}
 
